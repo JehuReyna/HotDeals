@@ -23,6 +23,9 @@
                 zoomControl: false // Oculta los controles de zoom
             });
 
+
+                /* getCurrentPosition PARA VER LA POSICIÓN ACTUAL DEL USUARIO */
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var pos = {
@@ -40,13 +43,16 @@
 
                     }, function() {
                         handleLocationError(true, map.getCenter());
-                    }, {
-                        enableHighAccuracy: true, // Habilita alta precisión
-                        timeout: 2000, // Timeout en milisegundos
-                        maximumAge: 0 // No usar ubicación en caché
+                    }, 
+                        /* INTENTO DE ALTA PRESICIÓN */
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 2000,
+                        maximumAge: 0
                     }
                 );
 
+                    /* watchPosition PARA SEGUIR AL USUARIO */
 
                 navigator.geolocation.watchPosition(
                     function(position) {
@@ -63,10 +69,11 @@
                     function() {
                         handleLocationError(true, map.getCenter());
                     }, 
+                        // INTENTO DE ALTA PRESICIÓN
                     {
-                        enableHighAccuracy: true, // Habilita alta precisión
-                        timeout: 2000, // Timeout en milisegundos
-                        maximumAge: 0 // No usar ubicación en caché
+                        enableHighAccuracy: true, 
+                        timeout: 2000, 
+                        maximumAge: 0
                     }
                 );
 

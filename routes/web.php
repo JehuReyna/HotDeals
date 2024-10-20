@@ -22,3 +22,16 @@ Route::get('/', function () {
     return view('paginas/index');
 });
 
+Route::get('/perfil', function () {
+    return view('paginas/perfil');
+});
+
+Route::get('/seguidos', function () {
+    return view('paginas/seguidos');
+});
+
+
+Route::get('/informacion', function () {
+    return view('paginas/informacion');
+});
+
