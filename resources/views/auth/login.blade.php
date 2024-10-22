@@ -28,11 +28,14 @@
             <div class="back">
                 <div class="form-container">
                     <p class="title">Inicio de sesión</p>
-                    <form class="form">
+                    <form class="form" method="POST" action="">
+                        @csrf
+                        {{-- Usuario --}}
                         <div class="input-group">
-                            <label for="username">Usuario</label>
-                            <input type="text" name="username" id="username" placeholder="">
+                            <label for="user">Usuario</label>
+                            <input type="text" name="user" id="user" placeholder="">
                         </div>
+                        {{-- Contraseña --}}
                         <div class="input-group">
                             <label for="password">Contraseña</label>
                             <input type="password" name="password" id="password" placeholder="">
@@ -40,11 +43,12 @@
                                 <a rel="noopener noreferrer" href="#">¿Olvidaste tu contraseña?</a>
                             </div>
                         </div>
+                        {{-- Botón iniciar --}}
                         <div class="content-align-center">
-                            <button class="sign">Iniciar</button>
+                            <button class="submit">Iniciar</button>
                         </div>
-                        
                     </form>
+                     {{-- Botones para iniciar sesion con redes sociales --}}
                     <div class="social-message">
                         <div class="line"></div>
                         <p class="message">Inicia sesión con:</p>
@@ -68,6 +72,11 @@
                     <p class="signup">¿No tienes cuenta?
                         <a rel="noopener noreferrer" href="/registro" class="">Registrarse</a>
                     </p>
+                    @error('message')
+                        <p class="--bs-danger-border-subtle --bs-danger-text-emphasis">
+                            Error al iniciar sesion.
+                        </p>
+                    @enderror
                 </div>
             </div>
         </div>

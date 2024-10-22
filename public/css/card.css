@@ -13,6 +13,55 @@
 }
 
 /* Estilo de la carta */
+.card-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    width: 320px;
+    height: 480px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75rem;
+}
+
+.back {
+    background-color: white;
+    color: black;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    border-radius: 0.75rem;
+}
 
 .shadow {
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
@@ -86,7 +135,7 @@
     text-decoration: underline rgba(167, 139, 250, 1);
 }
 
-.sign {
+.sign, .submit {
     display: block;
     width: 100%;
     background-color: rgba(167, 139, 250, 1);
@@ -144,53 +193,19 @@
     color: rgba(156, 163, 175, 1);
 }
 
-
-
-
-
-
-
-/* Animación para el flip de la carta */
-
-
-.card-container {
-    perspective: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.next-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.card {
-    width: 420px;
-    height: 480px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s;
-}
-
-.card.flipped {
-    transform: rotateY(180deg);
-}
-
-.front, .back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-}
-
-.front {
-    background-color: rgba(17, 24, 39, 1);
-    color: rgba(243, 244, 246, 1);
-    border-radius: 0.75rem;
-    padding: 2rem;
-}
-
-.back {
-    background-color: rgba(17, 24, 39, 1);
-    color: rgba(243, 244, 246, 1);
-    border-radius: 0.75rem;
-    padding: 2rem;
-    transform: rotateY(180deg);
+.next-btn:hover {
+    background-color: #45a049;
 }

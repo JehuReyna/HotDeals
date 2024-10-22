@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +37,24 @@ Route::get('/informacion', function () {
     return view('paginas/informacion');
 });
 
-Route::get('/login', function () {
-    return view('funciones/login');
+Route::get('/cuenta', function () {
+    return view('components/cuenta');
 });
 
 
-Route::get('/registro', function () {
-    return view('funciones/registro');
-});
+//Login y registro:
 
+Route::get('/login', [SessionsController::class, 'create'])
+    ->name('login.index');
+
+Route::post('/login', [SessionsController::class, 'store'])
+    ->name('login.store');
+
+Route::get('/logout', [SessionsController::class, 'destroy'])
+    ->name('login.destroy');
+
+Route::get('/register', [RegisterController::class, 'create'])
+    ->name('register.index');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->name('register.store');
