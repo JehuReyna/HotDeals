@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/styledropdown.css') }}">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYmACEm27EsXqoSQwUekt2L0J9YP35AMw"></script>
     <script>
         function initMap() {
 
@@ -158,5 +152,3 @@
 <body onload="initMap()">
     <div id="map" style="width:100%;height:100vh;"></div>
 </body>
-
-</html>

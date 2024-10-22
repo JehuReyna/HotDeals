@@ -35,3 +35,12 @@ Route::get('/informacion', function () {
     return view('paginas/informacion');
 });
 
+Route::get('/login', function () {
+    return view('funciones/login');
+});
+
+
+Route::get('/registro', function () {
+    return view('funciones/registro');
+});
+
