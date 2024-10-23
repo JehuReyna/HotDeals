@@ -37,9 +37,15 @@ Route::get('/informacion', function () {
     return view('paginas/informacion');
 });
 
+Route::get('/venta', function () {
+    return view('paginas/venta');
+});
+
+
 Route::get('/cuenta', function () {
     return view('components/cuenta');
 });
+
 
 
 //Login y registro:
