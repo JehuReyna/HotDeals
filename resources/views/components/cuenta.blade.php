@@ -23,7 +23,11 @@
                 productos que tú buscas te encuenten!!
                 Todo desde la comodidad de tu dispositivo.
             </div>
-            <a class="btn" href="{{ route('register.index') }}">¡Iniciemos!</a>
+            <form action="{{ route('register.index') }}" method="GET">
+                <input type="hidden" name="role" value="cliente">
+                <button type="submit" class="btn">¡Iniciemos!</button>
+            </form>
+
             <div class="bar">
                 <div class="emptybar"></div>
                 <div class="filledbar"></div>
@@ -37,7 +41,10 @@
                 oportunidad perfecta para expandir tu negocio, mejorar tu presencia y alcanzar a una audiencia
                 más amplia.
             </div>
-            <a class="btn" href="{{ route('register.index') }}">¡Iniciemos!</a>
+            <form action="{{ route('register.index') }}" method="GET">
+                <input type="hidden" name="role" value="vendedor">
+                <button type="submit" class="btn">¡Iniciemos!</button>
+            </form>            
             <div class="bar">
                 <div class="emptybar"></div>
                 <div class="filledbar"></div>

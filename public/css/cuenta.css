@@ -1,3 +1,16 @@
+body,
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/mapa-obscuro.png');
+    background-repeat: no-repeat;
+}
+
+
 .cards-container {
     display: flex;
     justify-content: center;
@@ -8,8 +21,8 @@
 .card {
     display: flex;
     flex-direction: column;
-    height: 280px;
-    width: 270px;
+    height: 360px;
+    width: 320px;
     background-color: #2b223f;
     border-radius: 10px;
     box-shadow: -1rem 0 3rem #00000044;
@@ -47,10 +60,11 @@
 
 .btn {
     position: absolute;
-    top: 210px;
+    top: 290px;
+    left: 75px;
     margin: 0 20px;
     width: 120px;
-    height: 32px;
+    height: 38px;
     border-radius: 8px;
     border: none;
     background-color: #4a2f7c;
@@ -72,7 +86,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    top: 250px;
+    top: 60px;
     height: 5px;
     width: 100%;
 }
@@ -104,7 +118,7 @@
     padding: 20px;
     top: 60px;
     color: #eae0fd;
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 
 .stroke {

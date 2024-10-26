@@ -1,5 +1,70 @@
-/* Si es necesario, puedes agregar estilo adicional en tu archivo perfil.css */
-.rounded-circle img {
-    width: 100%;
-    height: auto;
+.card {
+    width: 250px;
+    height: 400px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe,
+        -15px -15px 30px #ffffff;
+    align-items: center;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    /* Opcional: borde para resaltar el círculo */
+}
+
+
+#container-ronded {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ronded_image {
+    width: 220px;
+    height: 180px;
+    border-radius: 5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+}
+
+#header {
+    background-image: linear-gradient(-90deg,
+            #43cea2 0%,
+            #185a9d 75%,
+            #185a9d 100%);
+    color: white;
+    font-weight: bold;
+}
+#tipografia{
+    border-radius: 10%;
+    transition: background-color 1s ease;
+}
+
+#tipografia:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Color oscuro al pasar el mouse */
 }

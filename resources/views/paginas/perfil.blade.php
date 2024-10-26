@@ -21,7 +21,7 @@
     </div --}}
 
     <header>
-        <div class="px-3 py-2 text-bg-dark border-bottom">
+        <div class="px-3 py-2 border-bottom" id="header">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a href="/"
@@ -35,7 +35,7 @@
 
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
                         <li>
-                            <a href="/" class="nav-link text-white">
+                            <a href="/" class="nav-link text-white mx-2" id="tipografia">
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         fill="currentColor" class="bi bi-map" viewBox="0 0 16 16">
@@ -52,26 +52,29 @@
 
                         {{-- Este apartado solo lo podrá ver el usuario de tipo vendedor --}}
 
-                        <li>
-                            <a href="/" class="nav-link text-white">
-                                <div class="row">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white "
-                                        class="bi bi-shop" viewBox="0 0 16 16">
-                                        <path
-                                            d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="row">
-                                    Mi venta
-                                </div>
-                            </a>
-                        </li>
+                        @if (auth()->user()->role == 'admin')
+                            <li>
+                                <a href="/venta" class="nav-link text-white mx-2" id="tipografia">
+                                    <div class="row">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="white" class="bi bi-shop" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="row">
+                                        Mi venta
+                                    </div>
+                                </a>
+                            </li>
+                        @endif
+
 
                         {{-- Vista disponible para todos los tipos de usuarios --}}
 
                         <li>
-                            <a href="/" class="nav-link text-white">
+                            <a href="/" class="nav-link text-white mx-2" id="tipografia">
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
                                         class="bi bi-person-heart" viewBox="0 0 16 16">
@@ -89,7 +92,7 @@
                         {{-- Vista disponible para todos los tipos de usuarios --}}
 
                         <li>
-                            <a href="/" class="nav-link text-white">
+                            <a href="/" class="nav-link text-white mx-2" id="tipografia">
                                 <div class="row">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
                                         class="bi bi-info-circle" viewBox="0 0 16 16">
@@ -123,33 +126,86 @@
         </div>
     </header>
 
-    {{-- BODY --}}
 
-    <div class="row">
+
+    {{-- INFORMACÓN DEL PERFIL --}}
+
+    <div class="row me-2 text-center align-items-center justify-content-center">
         <div class="col-4">
-           
-            <div class="col-4">
 
-            </div>
-            <div class="col-4">
+        </div>
+        <div class="col-4" id="center">
+            <div class="contenido my-2 mx-2">
+                <div id="container">
+                    <div class="circle">
+                        <img src="{{ asset('img/venta.jpg') }}" alt="Descripción de la Imagen">
+                    </div>
+                </div>
 
+                <h2 class="fw-normal">{{ auth()->user()->user }}</h2>
+                <h4 class="fw-normal">Categoría buscada</h2>
+                    <p>Another exciting bit of representative placeholder content. This time, we've moved on to the
+                        second column.</p>
+                    <p><a class="btn btn-secondary" href="#">View details »</a></p>
             </div>
         </div>
+        <div class="col-4">
+
+        </div>
+    </div>
 
 
+    <hr>
+
+    {{-- PUNTOS DE VENTA PARA EL VENDEDOR Y TIENDA PARA LOS CLIENTES --}}
+
+    <div class="row my-3 mx-3 text-center">
+        <div class="card" style="background-color:ghostwhite">
+            <div class="container mt-2">
+                <p class="fw-bold fs-3 border-bottom border-info" style="--bs-border-opacity: .5;">
+                    Categoria
+                </p>
+            </div>
+            <div class="container" id="container-ronded">
+                <div class="ronded_image">
+                    <img src="{{ asset('img/venta.jpg') }}" alt="Descripción de la Imagen">
+                </div>
+            </div>
+            <div class="container mt-1">
+                <p class="lh-sm">
+                    En esta tienda tenemos diferentes productos de origen vegetal, frescos y de alta calidad!
+                </p>
+            </div>
+            <div class="container mb-1">
+                <button type="button" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10">
+                        </path>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
 
+    {{-- TIENDA PARA LOS VENDEDORES --}}
+    <div class="row me-2">
+        w
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
+    </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
-        </script>
 </body>
 
 </html>

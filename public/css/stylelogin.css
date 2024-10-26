@@ -1,0 +1,103 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/mapa-obscuro.png');
+    background-repeat: no-repeat;
+}
+
+.row {
+    width: 100%;
+    height: 590px;
+    padding: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.col-6 {
+    border-left: #43cea2;
+    border-right: #43cea2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* CONTENEDOR 1 */
+
+.container-1{
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: aliceblue;
+    font-family: sans-serif;
+}
+
+.logo-container{
+    width: 180px;
+    height: 280px;
+    border-radius: 5%;
+    margin-left: 100px
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CONTENEDOR 2 */
+
+.container-2 {
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 20px;
+    color: aliceblue;
+
+}
+
+.title {
+    font-size: 1.4em;
+    font-weight: 100;
+    text-align: center;
+}
+
+.input-group {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 0px;
+}
+
+.input-group input {
+    border: 1px solid #ccc;
+    background-color:transparent;
+    font-size: 1em;
+    color: aliceblue;
+}
+
+
+.submit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
