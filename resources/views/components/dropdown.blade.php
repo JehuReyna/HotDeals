@@ -10,6 +10,7 @@
             </path>
         </svg>
     </button>
+
     <div class="dropdown-content">
 
         {{-- mostrará el perfil del usuario, solo se verá cuando tenga un perfil. --}}
@@ -33,16 +34,41 @@
                 </div>
             </a>
 
-            {{-- mostrará a los vendedores que su espacio de venta, solo lo podrán ver los vendedores --}}
-            @if(auth()->user()->role =='vendedor')
-                <a href="/venta">
+            {{-- Esto solo lo vera el usuario de tipo admin --}}
+
+            @if (auth()->user()->role == 'admin')
+                <a href="/admin">
                     <div class="tooltip-container">
-                        <span class="tooltip">Mi venta</span>
+                        <span class="tooltip">Panel</span>
                         <span class="text">
                             <div class="borde-back">
                                 <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
-                                        fill="white " class="bi bi-shop" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" 
+                                        fill="white" class="bi bi-clipboard2-pulse-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5">
+                                        </path>
+                                        <path
+                                            d="M4.085 1H3.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1h-.585q.084.236.085.5V2a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 2v-.5q.001-.264.085-.5M9.98 5.356 11.372 10h.128a.5.5 0 0 1 0 1H11a.5.5 0 0 1-.479-.356l-.94-3.135-1.092 5.096a.5.5 0 0 1-.968.039L6.383 8.85l-.936 1.873A.5.5 0 0 1 5 11h-.5a.5.5 0 0 1 0-1h.191l1.362-2.724a.5.5 0 0 1 .926.08l.94 3.135 1.092-5.096a.5.5 0 0 1 .968-.039Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </a>
+            @endif
+
+            {{-- mostrará a los vendedores que su espacio de venta, solo lo podrán ver los vendedores --}}
+            
+                <a href="/venta">
+                    <div class="tooltip-container">
+                        <span class="tooltip">Tienda</span>
+                        <span class="text">
+                            <div class="borde-back">
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white "
+                                        class="bi bi-shop" viewBox="0 0 16 16">
                                         <path
                                             d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5M4 15h3v-5H4zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm3 0h-2v3h2z">
                                         </path>
@@ -52,8 +78,8 @@
                         </span>
                     </div>
                 </a>
-            @endif
             
+
 
             {{-- mostrará a los vendedores que siguen y si se encuentran vendiendo --}}
 
@@ -119,47 +145,47 @@
                     </span>
                 </div>
             </a>
-            @else
-                <a href="/cuenta">
-                    <div class="tooltip-container">
-                        <span class="tooltip">Registrar</span>
-                        <span class="text">
-                            <div class="borde-back">
-                                <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
-                                        class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6">
-                                        </path>
-                                        <path fill-rule="evenodd"
-                                            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5">
-                                        </path>
-                                    </svg>
-                                </div>
+        @else
+            <a href="/cuenta">
+                <div class="tooltip-container">
+                    <span class="tooltip">Registrar</span>
+                    <span class="text">
+                        <div class="borde-back">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+                                    class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6">
+                                    </path>
+                                    <path fill-rule="evenodd"
+                                        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5">
+                                    </path>
+                                </svg>
                             </div>
-                        </span>
-                    </div>
-                </a>
-                <a href="{{ route('login.index') }}">
-                    <div class="tooltip-container">
-                        <span class="tooltip">Iniciar sesion</span>
-                        <span class="text">
-                            <div class="borde-back">
-                                <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
-                                        class="bi bi-person-fill-check" viewBox="0 0 16 16">
-                                        <path
-                                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0">
-                                        </path>
-                                        <path
-                                            d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4">
-                                        </path>
-                                    </svg>
-                                </div>
+                        </div>
+                    </span>
+                </div>
+            </a>
+            <a href="{{ route('login.index') }}">
+                <div class="tooltip-container">
+                    <span class="tooltip">Iniciar sesion</span>
+                    <span class="text">
+                        <div class="borde-back">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+                                    class="bi bi-person-fill-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0">
+                                    </path>
+                                    <path
+                                        d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4">
+                                    </path>
+                                </svg>
                             </div>
-                        </span>
-                    </div>
-                </a>
+                        </div>
+                    </span>
+                </div>
+            </a>
         @endif
     </div>
+</div>
 </div>

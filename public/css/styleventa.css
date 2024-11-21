@@ -1,0 +1,135 @@
+/* esto le pertenece al header */
+#userAcomodado {
+    position: absolute;
+    margin-top: 12px;
+    margin-left: -40px;
+    color: rgb(72, 204, 164);
+    background-color: rgb(32, 92, 156);
+    font-weight: 700;
+    font-size: 15;
+}
+
+#userAcomodado:hover {
+    background-color: rgb(72, 204, 164);
+    color: rgb(32, 92, 156);
+}
+
+#header {
+    background-image: linear-gradient(-90deg,
+            #43cea2 0%,
+            #185a9d 75%,
+            #185a9d 100%);
+    color: white;
+    font-weight: bold;
+}
+
+#tipografia{
+    border-radius: 10%;
+    transition: background-color 1s ease;
+}
+
+#tipografia:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Color oscuro al pasar el mouse */
+}
+
+/* Fondo de la página */
+body,
+html {
+    background-color: #e3d7bf;
+}
+
+
+
+
+/* Body */
+
+#row{
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #ab9680;
+    
+    text-align: center;
+    color: #553d2a;
+    font-family: monospace;
+    font-size: 7vh;
+    font-weight: bold;
+}
+
+#content-cards{
+    margin-right: 0px;
+    width: cover;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -20px;
+    margin-right: -50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.content{
+    width: 100%;
+    margin-right: 0px;
+    text-align: center;
+}
+
+#card {
+    width: 250px;
+    height: 400px;
+    color: #553d2a;
+    background-color: #ab9680;
+    box-shadow: 15px 15px 30px #553d2a;
+    align-items: center;
+}
+
+#container-ronded {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ronded_image {
+    width: 220px;
+    height: 180px;
+    border-radius: 5%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+}
+
+
+/* carta de la tienda */
+
+
+#categoria{
+    font-family: monospace;
+}
+
+#ubicacion{
+    margin-bottom: 5px;
+}
+
+#button-locate-active{
+    
+}
+
+#button-show{
+
+}
+
+
+#button-locate-active:hover {
+    background-color: rgb(114, 0, 0); /* Color oscuro al pasar el mouse */
+}
+
+#button-show:hover {
+    background-color: rgb(121, 111, 1); /* Color oscuro al pasar el mouse */
+}

@@ -26,8 +26,9 @@ class RegisterController extends Controller
                 'user' => 'required|string|max:255|unique:users,user',
                 'password' => 'required|string|min:8|confirmed',
                 'password_confirmation' => 'required',
-                'role' => 'required|string|in:cliente,vendedor'
-            ]);
+                'role' => 'required|string|in:cliente,vendedor,admin',
+/*                 'puntodeventa_id', 
+ */            ]);
 
             $user = User::create([
                 'email' => $data['email'],
@@ -35,7 +36,8 @@ class RegisterController extends Controller
                 'last_name' => $data['last_name'],
                 'user' => $data['user'],
                 'password' => $data['password'],
-                'role' => $data['role'],
+/*                 'puntodeventa_id'=> $data['puntodeventa_id'],
+ */                'role' => $data['role'],
             ]);
 
             auth()->login($user);

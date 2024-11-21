@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'last_name',
         'user',
-        'role'
+        'role',
     ];
 
     /**
@@ -46,4 +46,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function puntodeventa()
+    {
+        return $this->hasMany(PuntoDeVenta::class, 'user_id', 'id');
+    }
 }

@@ -18,6 +18,10 @@ class AdminAuth
         if(auth()->check()){
             if(auth()->user()->role =='vendedor'){
                 return $next($request);
+            }else if(auth()->user()->role == 'admin'){
+                return $next($request);
+            }else if(auth()->user()->role == 'cliente'){
+                return $next($request);
             }
         }return redirect()->to('/');
     }

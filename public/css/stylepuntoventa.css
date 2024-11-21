@@ -1,0 +1,43 @@
+.puntodeventa {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    z-index: 1;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ff0000;
+    background-color: #ff0000;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#imagecircle {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    z-index: 1;
+}
+
+.ronded_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+
+.triangle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transform: translatey(-50%);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 40px solid #ff0000;
+}

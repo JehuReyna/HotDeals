@@ -14,7 +14,15 @@
 
 <body>
 
-    <div class="cards-container">
+    <div class="form-container" id="formContainer"></div>
+
+    <script>
+        window.onload = function() {
+            function adjustForm() {
+                const formContainer = document.getElementById('formContainer');
+                if (window.innerWidth > 1440) {
+                    formContainer.innerHTML = `
+                        <div class="cards-container">
         <div class="card">
             <div class="title-1">Como cliente:</div>
             <div class="content">
@@ -51,6 +59,70 @@
             </div>
         </div>
     </div>
+                    `;
+                } else {
+                    formContainer.innerHTML = `
+                    <div class="col">
+            <div class="cards-container">
+                <div class="row">
+                    <div class="card-1">
+                        <div class="title-1">Como cliente:</div>
+                        <div class="content">
+                            Tendrás acceso a una variedad de productos y servicios ofrecidos por vendedores locales.
+                            Podrás descubrir nuevas ofertas, apoyar a los negocios autóctonos de tu comunidad y podrás hacer que los
+                            productos que tú buscas te encuenten!!
+                            Todo desde la comodidad de tu dispositivo.
+                        </div>
+                        <form action="{{ route('register.index') }}" method="GET">
+                            <input type="hidden" name="role" value="cliente">
+                            <button type="submit" class="btn">¡Iniciemos!</button>
+                        </form>
+            
+                        <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card-2">
+                        <div class="title-1">Como vendedor:</div>
+                        <div class="content">
+                            Tendrás una plataforma para aumentar tu visibilidad y atraer a más clientes. Podrás
+                            listar tus productos y comunicarte directamente con tus compradores. Esta es una
+                            oportunidad perfecta para expandir tu negocio, mejorar tu presencia y alcanzar a una audiencia
+                            más amplia.
+                        </div>
+                        <form action="{{ route('register.index') }}" method="GET">
+                            <input type="hidden" name="role" value="vendedor">
+                            <button type="submit" class="btn">¡Iniciemos!</button>
+                        </form>
+                        <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    `;
+                }
+
+            }
+
+            adjustForm();
+
+            window.addEventListener('resize', adjustForm);
+        }
+    </script>
+
+
+   
+        
+        
+        
+        
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

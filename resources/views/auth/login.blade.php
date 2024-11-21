@@ -9,87 +9,234 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/stylelogin.css') }}">
     <title>Login</title>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script>
-        function flipCard() {
-            var card = document.querySelector('.card');
-            card.classList.toggle('flipped');
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '579116511453046', // Reemplaza con tu App ID de Facebook
+                cookie: true,
+                xfbml: true,
+                version: 'v15.0'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                // Llamada a la API de Facebook para obtener la información del usuario
+                FB.api('/me', {
+                    fields: 'name,email,picture,gender,location,birthday'
+                }, function(response) {
+                    console.log('Bienvenido, ' + response.name + '.');
+                    console.log('Email: ' + response.email);
+                    console.log('Picture: ' + response.picture.data.url);
+                    console.log('Gender: ' + response.gender);
+                    console.log('Location: ' + response.location.name);
+                    console.log('Birthday: ' + response.birthday);
+
+                    // Aquí puedes manejar los datos del usuario y enviarlos a tu backend
+                    // Por ejemplo, podrías hacer una petición AJAX para registrar/iniciar sesión al usuario en tu sistema
+                });
+            } else {
+                console.log('No está autenticado.');
+            }
         }
     </script>
+
 </head>
 
 <body>
-    <div class="row" id="row">
+    <div class="form-container" id="formContainer"></div>
+
+    <script>
+        window.onload = function() {
+            function adjustForm() {
+                const formContainer = document.getElementById('formContainer');
+                if (window.innerWidth > 1440) {
+                    formContainer.innerHTML = `
+                    <div class="row" id="row">
         <div class="col-6">
             <div class="container-1">
                 <!-- Contenido de la vista frontal -->
-                <h2>BIENVENIDO A HOTDEALS!</h2>
+                <h1>BIENVENIDO A HOTDEALS!</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, quibusdam. Enim ipsa ullam blanditiis
                     dignissimos id fugit sapiente consequuntur consectetur corrupti vitae, quo at itaque! Veniam
                     voluptates
                     vitae numquam. Deleniti..</p>
             </div>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="{{ asset('img/logoblanco.png') }}" alt="Descripción de la Imagen" textprimary="white">
+                </div>
+            </div>
         </div>
+
         <div class="col-6">
-            <p class="title">Inicio de sesión</p>
+            <div class="container-2">
+                <p class="title">Inicio de sesión</p>
+                <form class="form" method="POST" action="">
+                    @csrf
+                    {{-- Usuario --}}
+                    <div class="input-group">
+                        <label for="user">Usuario</label>
+                        <input type="text" name="user" id="user" placeholder="">
+                    </div>
+                    {{-- Contraseña --}}
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" placeholder="">
+                        <br>
+
+                        {{-- Botón iniciar --}}
+                        <div class="content-align-center">
+                            <button class="submit">Iniciar</button>
+                        </div>
+                        <div class="forgot">
+                            <a rel="noopener noreferrer" href="#">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <hr>
+                    </div>
+
+                </form>
+                {{-- Botones para iniciar sesion con redes sociales --}}
+                <div class="mt-3">
+                    <h6>O inicia sesión con tus redes sociales</h6>
+                    <button class="btn btn-outline-primary w-100 mb-2" onclick="checkLoginState();">Iniciar sesión con
+                        Facebook</button>
+                    <button class="btn btn-outline-danger w-100">Iniciar sesión con Google</button>
+                </div>
+
+
+                <br>
+                <br>
+                <br>
+                <hr>
+                <p class="signup">¿No tienes cuenta?
+                    <a rel="noopener noreferrer" href="/cuenta" class="">Registrarse</a>
+                </p>
+                @error('message')
+                    <p class="--bs-danger-border-subtle --bs-danger-text-emphasis">
+                        Error al iniciar sesion.
+                    </p>
+                @enderror
+            </div>
+        </div>
+    </div>
+                    `;
+
+                } else {
+                    formContainer.innerHTML = `
+                    <div class="row" id="row">
+    <div class="col">
+        <div class="container-1">
+            <!-- Contenido de la vista frontal -->
+            <h1 class="h1">BIENVENIDO A HOTDEALS!</h1>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="{{ asset('img/logoblanco.png') }}" alt="Descripción de la Imagen" textprimary="white">
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-2">
             <form class="form" method="POST" action="">
                 @csrf
                 {{-- Usuario --}}
-                <div class="input-group">
+                <div class="input-group" id="text">
                     <label for="user">Usuario</label>
                     <input type="text" name="user" id="user" placeholder="">
                 </div>
                 {{-- Contraseña --}}
-                <div class="input-group">
+                <div class="input-group" id="text">
                     <label for="password">Contraseña</label>
                     <input type="password" name="password" id="password" placeholder="">
-                    <div class="forgot">
+                    <br>
+
+                    {{-- Botón iniciar --}}
+                    <div class="content-align-center">
+                        <button class="submit">Iniciar</button>
+                    </div>
+                    <div class="forgot mt-2">
                         <a rel="noopener noreferrer" href="#">¿Olvidaste tu contraseña?</a>
                     </div>
+                    <br>
+                    <hr>
+                    <br>
                 </div>
-                {{-- Botón iniciar --}}
-                <div class="content-align-center">
-                    <button class="submit">Iniciar</button>
-                </div>
+
             </form>
             {{-- Botones para iniciar sesion con redes sociales --}}
-            <div class="social-message">
-                <div class="line"></div>
-                <p class="message">Inicia sesión con:</p>
-                <div class="line"></div>
-            </div>
-            <div class="social-icons">
-                <button aria-label="Log in with Google" class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-5 h-5 fill-current">
-                        <path
-                            d="M44.5 20H24v8.5h12.1C34.8 33.3 30 36.5 24 36.5c-6.6 0-12.1-4.4-14.1-10.4L6.4 29c2.7 7.6 9.8 13 17.6 13 10.5 0 19-8.6 19-19V24h-.1c0-.6-.1-1.3-.1-2z" />
-                        <path
-                            d="M9.9 24c0-1.4.2-2.7.7-3.9l-5.2-5.1C3.2 18.4 2 21.1 2 24s1.2 5.6 3.4 7.9l5.2-5C10.1 26.8 9.9 25.4 9.9 24z" />
-                        <path
-                            d="M24 9.5c3 0 5.7 1.1 7.8 3.1l5.8-5.8C33.8 3.7 29.2 2 24 2c-7.8 0-14.5 4.4-17.6 11l5.2 5.1C11.8 13.9 17 9.5 24 9.5z" />
-                        <path
-                            d="M44.5 20H24v8.5h12.1C34.8 33.3 30 36.5 24 36.5c-6.6 0-12.1-4.4-14.1-10.4L6.4 29c2.7 7.6 9.8 13 17.6 13 10.5 0 19-8.6 19-19V24h-.1c0-.6-.1-1.3-.1-2z" />
-                    </svg>
+            <div class="mt-3">
+                <h6 id="text-1">Inicia sesión con tus redes sociales</h6>
+                <br>
+                <br>
+                <button class="btn btn-outline-primary w-100 mb-2" onclick="checkLoginState();" id="text">
+                    Iniciar sesión con Facebook
                 </button>
-                <button aria-label="Log in with Facebook" class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
-                        <path
-                            d="M31.937 16C31.937 7.163 24.774 0 15.937 0S0 7.163 0 16c0 7.837 6.163 14.183 14.163 15.705v-11.09H9.847v-4.615h4.315v-3.45c0-4.3 2.627-6.652 6.494-6.652 1.862 0 3.467.139 3.934.2v4.566H21.16c-1.718 0-2.142.818-2.142 2.043v2.89h4.294l-.564 4.615h-3.73v11.01C25.805 30.136 32 23.811 32 16z" />
-                    </svg>
+                    <br>
+                    <br>
+                <button class="btn btn-outline-danger w-100" id="text">
+                    Iniciar sesión con Google
                 </button>
             </div>
-            <p class="signup">¿No tienes cuenta?
+            
+            <br>
+            <hr>
+            <br>
+
+            <p class="signup" id="text">¿No tienes cuenta?
                 <a rel="noopener noreferrer" href="/cuenta" class="">Registrarse</a>
             </p>
+            <br>
+            <div class="container-3" id="text">
+                <a href="/" id="a">
+                    volver
+                </a>
+            </div>
+            <br>
+            <br>
+            <br>
             @error('message')
-                <p class="--bs-danger-border-subtle --bs-danger-text-emphasis">
+                <p class="--bs-danger-border-subtle --bs-danger-text-emphasis" id="text">
                     Error al iniciar sesion.
                 </p>
             @enderror
         </div>
     </div>
+</div>
+                    `;
+                }
+
+            }
+
+            adjustForm();
+
+            window.addEventListener('resize', adjustForm);
+        }
+    </script>
 
 
 
+
+    <script src="{{ asset('js/fbauth.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
