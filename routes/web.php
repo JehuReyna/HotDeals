@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RegisterController;
@@ -10,9 +11,7 @@ use App\Http\Controllers\PuntoDeVentaController;
 
 
 
-Route::get('/', function () {
-    return view('paginas/index');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/perfil', function () {
     return view('paginas/perfil');
